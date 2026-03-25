@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pune Operations Dashboard</title>
+<link rel="icon" href="data:image/webp;base64,UklGRigFAABXRUJQVlA4IBwFAADQIgCdASq0ALQAPkkkj0UioiEUKfQIKASEsbdnz6vAZeGabDj8r1qPvvJ69FxmXAnIX+s+3n6Uf031W/if/ae4B/dP6n+pvWP8wH7X/tH7qn+K/x3sI9AD+ff3H1OP9d7FX9e/53sM/sZ6af7X/DH+537He2Q79fsApRH9C4gOMXHkHyFcvnAztYrdpP98qrAP7Bryp6W8AHby2ccDxKQksdSaalCxV56IUhMl45xFrogxJzlWAf2YbME11Qf3eXFH4XxJ3FS3+DWOe/rLeAGPNhvuHAf3DVtZLD8afzpcwoSnapB3qm6wDe10KD+y3Ei3+bomYcwo46GeEEexKLgZN+LaRlPatUMgHfQDfdRA2Rfkwix6g9iUhQ7nwLqQAAD+/5D5j/fDPlLqduWSpxnzPlGDLOmds+vMX1jFrgFn/LTe8KKhYRt3t539tgls3SxTj0HsgJ0nAK/5P+K6L6s4LjYKMw8XCrK4NwvIAVaoHHBv98U9ASyeNbTqf5sLiyqGSb92H4ubn3N8uMVeH5fvs4ygq3Dr32hJccb1rPwnXvww//6Dys7/Nz4VAK1NjVEz5PJHaxDiRgBscN6nMZpS5hn84a535v8puHOCLOnzw74v2uGjv3c3TRjocgIXgSwwbIGpI+AKP0ykgETif5plVLxwcou8AWjARo6C2xFmt0spMHVoUR80/EXz2VfsvzEJJfA+W76Qb8hCvAnq1lnOFnr9Zpl3uBQ2/mTsBMoNfNzF1xsRpfCAVsj0MVUyfhkukUbeetbWs40hAcg9I+ViwCLyC3OveyyY9cNx+dd2wmO33d2P9ONi0yTuybV6FcfA6ADXNvYplf0MPD1L87DJ8nAvh4CEsr53PgtR0SFm7e3yez+LJjN0iff4XOB3UQR5Sv0AvxG7guupsx4bqGskDGC3Wo0s8tOEIg/3HXCSXhhN4rhsmSgLcvZH1YDb+sbdv9JjLQGPZnMDWXeFG4hyoOS7Rr+oA5hi27ccI+v+lwF1x5tgMpnXkoIHZGto9Mp+MkJOja75zf+oI4akuSrTiH0uLaab7viW2jan7boECs76YwSO4yD1017MWLqXVhEc4Ih2FGKxmCfedwnq2zhYK/4n1m25jBbhIo5OYBRBVn6HYPQWjkNAsDbYYE3KwJTsyF784UYn6pY3UcPlE5ZbtTW9u+IhrP+zr0n7DCEYokeHtbqE2zUcXRMdU7jR/dUxDvPgg0gVxiOThYi1MjI/rLSs9PGsgEm3cCeepTQb3D0hWe7DpjOAz7fwFQH4xmq4KTB7wKyS7ZDQ3ysby8suhvHDyP+GTgku/sul7/sLitGcaNHZBfYRsNQkExvTeL0jS+hx2U0acbW2js0ZgM57uNAh9kgRNfEdHH/Z4K3ggdpBkejJG22wwqfgyWJN9rPdBkTg5b/QjgXgv8yIJWK68dkkdA2AG6BeOFMKKBX0t3tCanCTYVA0lObIRYCniCDeVmWwj+ygnA0jrP4H+fnfY70z3qd6sLrCWZRDM6/jhTiYD7tGyDpjrkKU9k1UUZOSNVnbdgxwmFtqDkaPHiLMVvAqiz9XqSefPOLvZl/BC4grFyxm2jQOqlTwpSSnr37ckCM3sX3hMAJWGg1htVO04KbC8oK7fwcNIbcwXhZaJdmfRV55bq1Z8zsMJgN737l9SRZMiMTCy48Z3ZlvitsrXpcX1AluUEAmW5bciDfk3yavTUJAZwKWAOWLMcDUKazDxgABa6yj8AAAAAA=" type="image/webp">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0c0c0f; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #16161a; }
+  ::-webkit-scrollbar-thumb { background: #e8772e; border-radius: 3px; }
+  select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8a96' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px !important; }
+  select option { background: #16161a; color: #e8e8ec; }
+  table { border-spacing: 0; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  #root > div > div:nth-child(2) > div { animation: fadeIn 0.4s ease-out; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useMemo } = React;
+
+// ─── EMBEDDED DATA ───────────────────────────────────────────────────────────
+const EMPLOYEES_DATA = {
+  Rahul: {
+    Jan: [
+      { name: "Rakesh Chintakindi", leads: 162, ql: 16, visits: 8, totalCalls: 1549, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Priyanka Kushare", leads: 163, ql: 38, visits: 10, totalCalls: 2228, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akash Tak", leads: 139, ql: 32, visits: 8, totalCalls: 1844, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rohan Donhe", leads: 184, ql: 58, visits: 0, totalCalls: 1307, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ansh Jaiswal", leads: 121, ql: 47, visits: 10, totalCalls: 1860, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akhilesh Sanjay Malthane", leads: 105, ql: 37, visits: 12, totalCalls: 1662, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Hina Shinde", leads: 144, ql: 47, visits: 8, totalCalls: 1958, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Sakshi Bhatele", leads: 196, ql: 40, visits: 6, totalCalls: 1931, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Veena Gawhade", leads: 118, ql: 23, visits: 5, totalCalls: 1607, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kunal Hemraj Patil", leads: 64, ql: 19, visits: 1, totalCalls: 775, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Sahitya", leads: 0, ql: 0, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Anjali Shaw", leads: 1, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aryan Swarnkar", leads: 1, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Feb: [
+      { name: "Rakesh Chintakindi", leads: 57, ql: 7, visits: 1, totalCalls: 1026, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Priyanka Kushare", leads: 208, ql: 34, visits: 22, totalCalls: 2459, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akash Tak", leads: 108, ql: 14, visits: 9, totalCalls: 1905, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rohan Donhe", leads: 105, ql: 32, visits: 1, totalCalls: 1405, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ansh Jaiswal", leads: 48, ql: 14, visits: 1, totalCalls: 1584, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akhilesh Sanjay Malthane", leads: 85, ql: 15, visits: 16, totalCalls: 1905, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Hina Shinde", leads: 247, ql: 55, visits: 12, totalCalls: 2695, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Sakshi Bhatele", leads: 142, ql: 29, visits: 5, totalCalls: 1884, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Veena Gawhade", leads: 114, ql: 40, visits: 5, totalCalls: 2323, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kunal Hemraj Patil", leads: 181, ql: 60, visits: 1, totalCalls: 1695, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Sahitya", leads: 0, ql: 0, visits: 0, totalCalls: 702, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Anjali Shaw", leads: 22, ql: 1, visits: 0, totalCalls: 852, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aryan Swarnkar", leads: 1, ql: 1, visits: 0, totalCalls: 189, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Mar: [
+      { name: "Rakesh Chintakindi", leads: 54, ql: 5, visits: 1, totalCalls: 1641, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Priyanka Kushare", leads: 30, ql: 4, visits: 2, totalCalls: 922, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akash Tak", leads: 86, ql: 12, visits: 3, totalCalls: 1392, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rohan Donhe", leads: 51, ql: 12, visits: 2, totalCalls: 1000, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ansh Jaiswal", leads: 32, ql: 6, visits: 3, totalCalls: 876, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Akhilesh Sanjay Malthane", leads: 76, ql: 15, visits: 10, totalCalls: 969, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Hina Shinde", leads: 75, ql: 25, visits: 13, totalCalls: 1447, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Sakshi Bhatele", leads: 54, ql: 1, visits: 6, totalCalls: 1312, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Veena Gawhade", leads: 63, ql: 19, visits: 3, totalCalls: 1201, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kunal Hemraj Patil", leads: 87, ql: 20, visits: 1, totalCalls: 1384, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Sahitya", leads: 1, ql: 0, visits: 0, totalCalls: 1120, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Anjali Shaw", leads: 39, ql: 12, visits: 4, totalCalls: 1930, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aryan Swarnkar", leads: 5, ql: 2, visits: 0, totalCalls: 1508, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+  },
+  Nikhil: {
+    Jan: [
+      { name: "Nikhil Mohan Pardeshi", leads: 0, ql: 0, visits: 0, totalCalls: 178, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Saurav Gopal Ghose", leads: 0, ql: 0, visits: 1, totalCalls: 124, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kratika Raghuwanshi", leads: 58, ql: 10, visits: 0, totalCalls: 10, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Shameez Shahzad Sayed", leads: 112, ql: 19, visits: 4, totalCalls: 580, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rushikesh Bapurao Gurude", leads: 180, ql: 16, visits: 10, totalCalls: 2126, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nikhil Bhardwaj", leads: 0, ql: 0, visits: 5, totalCalls: 2678, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Pratik Dash", leads: 64, ql: 20, visits: 4, totalCalls: 134, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Yash Mangesh Nikumbh", leads: 22, ql: 5, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Vaishnavi Gawde", leads: 1, ql: 0, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Neha Prakash Khairnar", leads: 3, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ashish Lalwani", leads: 2, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Feb: [
+      { name: "Vaishnavi Gawde", leads: 56, ql: 11, visits: 0, totalCalls: 787, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Mrunalini Anand Dhivare", leads: 0, ql: 0, visits: 3, totalCalls: 994, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Neha Prakash Khairnar", leads: 33, ql: 15, visits: 1, totalCalls: 853, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Yash Mangesh Nikumbh", leads: 36, ql: 5, visits: 1, totalCalls: 1315, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nikhil Mohan Pardeshi", leads: 0, ql: 0, visits: 0, totalCalls: 7, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kratika Raghuwanshi", leads: 143, ql: 23, visits: 3, totalCalls: 1758, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Shameez Shahzad Sayed", leads: 141, ql: 33, visits: 6, totalCalls: 1213, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rushikesh Bapurao Gurude", leads: 142, ql: 20, visits: 7, totalCalls: 1908, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Sahil Priyadarshi", leads: 11, ql: 2, visits: 0, totalCalls: 2, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nikhil Bhardwaj", leads: 0, ql: 0, visits: 2, totalCalls: 711, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Pratik Dash", leads: 148, ql: 40, visits: 13, totalCalls: 1294, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Divita Manojkumar Meshram", leads: 0, ql: 0, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aryan Patil", leads: 5, ql: 0, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ashish Lalwani", leads: 17, ql: 6, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Mar: [
+      { name: "Ashish Lalwani", leads: 74, ql: 8, visits: 1, totalCalls: 1406, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Vaishnavi Gawde", leads: 24, ql: 10, visits: 2, totalCalls: 2055, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Mrunalini Anand Dhivare", leads: 0, ql: 0, visits: 1, totalCalls: 309, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Neha Prakash Khairnar", leads: 2, ql: 0, visits: 3, totalCalls: 1273, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Yash Mangesh Nikumbh", leads: 9, ql: 5, visits: 0, totalCalls: 2065, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nikhil Mohan Pardeshi", leads: 0, ql: 0, visits: 0, totalCalls: 4, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Kratika Raghuwanshi", leads: 63, ql: 20, visits: 6, totalCalls: 963, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Shameez Shahzad Sayed", leads: 69, ql: 15, visits: 2, totalCalls: 793, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aryan Patil", leads: 12, ql: 4, visits: 2, totalCalls: 1602, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Rushikesh Bapurao Gurude", leads: 93, ql: 16, visits: 7, totalCalls: 979, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Sahil Priyadarshi", leads: 50, ql: 12, visits: 2, totalCalls: 1258, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Divita Manojkumar Meshram", leads: 5, ql: 4, visits: 1, totalCalls: 2111, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Pratik Dash", leads: 98, ql: 21, visits: 5, totalCalls: 960, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+  },
+  "Kiran Kumar": {
+    Jan: [
+      { name: "Kirankumar Mashette", leads: 0, ql: 0, visits: 0, totalCalls: 526, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Anisha Sahu", leads: 0, ql: 0, visits: 3, totalCalls: 1247, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Saurabh Pravin Patil", leads: 146, ql: 46, visits: 0, totalCalls: 877, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nyasha Gupta", leads: 334, ql: 19, visits: 6, totalCalls: 2499, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Lochan Sharad Puranik", leads: 0, ql: 0, visits: 1, totalCalls: 1802, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Vaibhav Babasaheb Rathod", leads: 0, ql: 0, visits: 13, totalCalls: 1708, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Siddhi Ajay Chordiya", leads: 6, ql: 4, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Rameshrao Trimukhe", leads: 25, ql: 12, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Om Ganesh Shahane", leads: 31, ql: 7, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ruchi Parihar", leads: 21, ql: 16, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Insu Patle", leads: 1, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhinav Morone", leads: 3, ql: 3, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aman Gupta", leads: 6, ql: 4, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Bhavesh Parmar", leads: 10, ql: 6, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Dikshita Prakash Patil", leads: 1, ql: 1, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Feb: [
+      { name: "Kirankumar Mashette", leads: 0, ql: 0, visits: 0, totalCalls: 837, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Rameshrao Trimukhe", leads: 129, ql: 32, visits: 0, totalCalls: 1630, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Saurabh Pravin Patil", leads: 85, ql: 10, visits: 0, totalCalls: 1850, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Dikshita Prakash Patil", leads: 21, ql: 3, visits: 0, totalCalls: 75, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhinav Morone", leads: 21, ql: 8, visits: 0, totalCalls: 118, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nyasha Gupta", leads: 56, ql: 4, visits: 9, totalCalls: 1806, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Lochan Sharad Puranik", leads: 0, ql: 0, visits: 2, totalCalls: 1179, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aman Gupta", leads: 21, ql: 5, visits: 0, totalCalls: 63, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Bhavesh Parmar", leads: 37, ql: 7, visits: 0, totalCalls: 85, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Insu Patle", leads: 24, ql: 5, visits: 0, totalCalls: 75, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Vaibhav Babasaheb Rathod", leads: 0, ql: 0, visits: 1, totalCalls: 191, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ruchi Parihar", leads: 15, ql: 3, visits: 0, totalCalls: 77, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Om Ganesh Shahane", leads: 158, ql: 60, visits: 0, totalCalls: 969, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Siddhi Ajay Chordiya", leads: 22, ql: 4, visits: 0, totalCalls: 79, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+    Mar: [
+      { name: "Kirankumar Mashette", leads: 0, ql: 0, visits: 0, totalCalls: 302, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhishek Rameshrao Trimukhe", leads: 98, ql: 43, visits: 1, totalCalls: 1078, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Saurabh Pravin Patil", leads: 28, ql: 4, visits: 3, totalCalls: 950, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Dikshita Prakash Patil", leads: 22, ql: 0, visits: 0, totalCalls: 456, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Abhinav Morone", leads: 4, ql: 1, visits: 0, totalCalls: 1254, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Aman Gupta", leads: 30, ql: 11, visits: 2, totalCalls: 903, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Bhavesh Parmar", leads: 35, ql: 5, visits: 1, totalCalls: 1120, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Insu Patle", leads: 14, ql: 5, visits: 1, totalCalls: 924, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Ruchi Parihar", leads: 8, ql: 0, visits: 1, totalCalls: 1208, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Om Ganesh Shahane", leads: 84, ql: 29, visits: 8, totalCalls: 739, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Siddhi Ajay Chordiya", leads: 30, ql: 6, visits: 0, totalCalls: 1152, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+      { name: "Nyasha Gupta", leads: 19, ql: 4, visits: 0, totalCalls: 0, bookings: 0, revenue: 0, pipeline: 0, salary: 0 },
+    ],
+  },
+};
+
+const PROJECTS_DATA = {
+  Rahul: {
+    Jan: [
+      { project: "Birla Estate Pune", leads: 147, ql: 87, visits: 14, spend: 84566, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Bramha Corp Codename Panorama Bavdhan Pune", leads: 222, ql: 87, visits: 17, spend: 155856, bookings: 5, revenue: 2043044, pipeline: 0 },
+      { project: "Kohinoor Downtown 2 Wakad Pune", leads: 58, ql: 36, visits: 5, spend: 68002, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Kolte Patil Codename Xtra Hinjewadi Pune", leads: 69, ql: 28, visits: 6, spend: 65177, bookings: 1, revenue: 170737, pipeline: 0 },
+      { project: "Krisala & Hiranandani Pune", leads: 195, ql: 76, visits: 13, spend: 218183, bookings: 1, revenue: 210000, pipeline: 0 },
+      { project: "Lodha New Launch Hinjewadi Pune", leads: 43, ql: 14, visits: 5, spend: 143820, bookings: 0, revenue: 248000, pipeline: 0 },
+      { project: "Mahindra Citadel Pune", leads: 58, ql: 29, visits: 3, spend: 75121, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Majestique Codename Prime West Pune", leads: 92, ql: 42, visits: 7, spend: 75809, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Saheel Luxton Wakad Pune", leads: 10, ql: 5, visits: 0, spend: 33799, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Saheel Wakad 111 Pune", leads: 47, ql: 16, visits: 2, spend: 73608, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "WYCE Exclucity Bavdhan Pune", leads: 118, ql: 34, visits: 3, spend: 146180, bookings: 0, revenue: 0, pipeline: 0 },
+    ],
+    Feb: [
+      { project: "Birla Estate Pune", leads: 106, ql: 43, visits: 4, spend: 112063, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Bramha Corp Codename Panorama Bavdhan Pune", leads: 108, ql: 33, visits: 5, spend: 61325, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Kohinoor Downtown 2 Wakad Pune", leads: 136, ql: 69, visits: 8, spend: 131661, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Kolte Patil Codename Udaan Hinjewadi Pune", leads: 74, ql: 26, visits: 6, spend: 0, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Kolte Patil Codename Xtra Hinjewadi Pune", leads: 58, ql: 31, visits: 6, spend: 39268, bookings: 1, revenue: 184250, pipeline: 0 },
+      { project: "Krisala & Hiranandani Pune", leads: 227, ql: 93, visits: 10, spend: 185650, bookings: 2, revenue: 935951, pipeline: 0 },
+      { project: "Lodha New Launch Hinjewadi Pune", leads: 131, ql: 24, visits: 8, spend: 244726, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Mahindra Citadel Pune", leads: 7, ql: 3, visits: 0, spend: 9117, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Majestique Aaravli Warje Pune", leads: 76, ql: 48, visits: 11, spend: 81039, bookings: 1, revenue: 201271, pipeline: 390000 },
+      { project: "Majestique Codename Prime West Pune", leads: 65, ql: 30, visits: 3, spend: 66571, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Saheel Luxton Wakad Pune", leads: 5, ql: 3, visits: 1, spend: 5746, bookings: 0, revenue: 0, pipeline: 0 },
+      { project: "Saheel Wakad 111 Pune", leads: 24, ql: 9, visits: 1, spend: 26102, bookings: 0, revenue: 0, pipeline: 0 },
+    ],
+    Mar: [
+      { project: "Birla Estate Pune", leads: 95, ql: 28, visits: 3, spend: 71625, bookings: 0, revenue: 0, pipeline: 560000 },
+      { project: "Bramha Corp Codename Panorama Bavdhan Pune", leads: 155, ql: 51, visits: 4, spend: 81077, bookings: 1, revenue: 766740, pipeline: 1200000 },
+      { project: "Kolte Patil Codename Udaan Hinjewadi Pune", leads: 93, ql: 14, visits: 5, spend: 27400, bookings: 1, revenue: 357500, pipeline: 350000 },
+      { project: "Kolte Patil Codename Xtra Hinjewadi Pune", leads: 14, ql: 5, visits: 2, spend: 15368, bookings: 0, revenue: 0, pipeline: 420000 },
+      { project: "Krisala & Hiranandani Pune", leads: 197, ql: 81, visits: 15, spend: 158574, bookings: 1, revenue: 176750, pipeline: 720000 },
+    ],
+  },
+  Nikhil: {
+    Jan: [
+      { project: "Godrej Evergreen Square", leads: 97, ql: 23, visits: 0, spend: 56667, bookings: 1, revenue: 0, pipeline: 298720 },
+      { project: "Godrej Aqua Retreat", leads: 22, ql: 9, visits: 0, spend: 37349, bookings: 1, revenue: 0, pipeline: 312670 },
+      { project: "Godrej Green Front", leads: 121, ql: 27, visits: 0, spend: 0, bookings: 0, revenue: 0, pipeline: 0 },
+    ],
+    Feb: [
+      { project: "Godrej Evergreen Square", leads: 265, ql: 89, visits: 0, spend: 134523, bookings: 3, revenue: 0, pipeline: 815000 },
+      { project: "Godrej Aqua Retreat", leads: 112, ql: 59, visits: 0, spend: 97385, bookings: 1, revenue: 0, pipeline: 290000 },
+      { project: "Godrej Green Front", leads: 118, ql: 28, visits: 0, spend: 44323, bookings: 0, revenue: 0, pipeline: 0 },
+    ],
+    Mar: [
+      { project: "Godrej Evergreen Square", leads: 220, ql: 42, visits: 0, spend: 96419, bookings: 5, revenue: 0, pipeline: 1350000 },
+      { project: "Godrej Aqua Retreat", leads: 174, ql: 71, visits: 0, spend: 106636, bookings: 1, revenue: 0, pipeline: 315000 },
+      { project: "Godrej Green Front", leads: 67, ql: 21, visits: 0, spend: 0, bookings: 0, revenue: 0, pipeline: 0 },
+    ],
+  },
+};
+
+const MARKETING_SPEND = {
+  Jan: [
+    { project: "Birla Punya Pune", spend: 91749 },
+    { project: "Bramha Corp Codename Panorama Bavdhan Pune", spend: 148668 },
+    { project: "Majestique Codename Prime West Pune", spend: 98756 },
+    { project: "Kohinoor Regalia / Downtown Wakad Pune", spend: 56892 },
+    { project: "Kolte Patil Qurious Life Republic", spend: 71671 },
+    { project: "Mahindra Citadel Pune", spend: 107722 },
+    { project: "Majestique Aaravli Warje Pune", spend: 127299 },
+    { project: "Wyce Exclucity Bavdhan", spend: 146256 },
+    { project: "Krisala Hiranandani", spend: 204887 },
+    { project: "Kohinoor Downtown 2 Wakad", spend: 78408 },
+    { project: "Godrej Evergreen Hinjewadi Pune", spend: 56667 },
+    { project: "Birla Evam", spend: 155226 },
+    { project: "Kumar Parc", spend: 136120 },
+    { project: "Kohinoor Central Park Hinjewadi", spend: 84135 },
+    { project: "Shapoorji Plots Hadapsar Pune", spend: 96769 },
+    { project: "Kohinoor Royale Towers Blueridge", spend: 19539 },
+    { project: "Saheel Wakad 111 / Luxton", spend: 122493 },
+    { project: "Godrej Upper Kharadi Pune", spend: 80112 },
+    { project: "Godrej Aqua Retreat Hinjewadi", spend: 37349 },
+    { project: "VJ Indiworks Kothrud Pune", spend: 21752 },
+    { project: "Lodha New Launch Hinjewadi Pune", spend: 173502 },
+    { project: "Kohinoor Kaliedo Kharadi Pune", spend: 66829 },
+    { project: "Downtown + Downtown 2 Wakad Pune", spend: 135300 },
+    { project: "Lodha Camelot", spend: 6934 },
+    { project: "Puravankara Riviera Keshav Nagar", spend: 101 },
+  ],
+  Feb: [
+    { project: "Birla Punya Pune", spend: 134821 },
+    { project: "Kolte Patil Qrious Hinjewadi", spend: 54020 },
+    { project: "Kolte Patil Udaan Hinjewadi", spend: 110542 },
+    { project: "Krisala Hiranandani", spend: 189203 },
+    { project: "Godrej Evergreen Hinjewadi Pune", spend: 134523 },
+    { project: "Kumar Parc", spend: 92019 },
+    { project: "Godrej Ivara / Upper Kharadi", spend: 130934 },
+    { project: "VTP Aurelia (Godrej Park Springs)", spend: 81621 },
+    { project: "Godrej Park Springs", spend: 42443 },
+    { project: "Gera Island Of Joy Kharadi", spend: 77563 },
+    { project: "Godrej Aqua Retreat Hinjewadi", spend: 97385 },
+    { project: "Saheel Wakad 111 / Luxton (Kohinoor DT2)", spend: 65071 },
+    { project: "Majestique Codename Prime West Pune", spend: 73187 },
+    { project: "VJ Indiworks Kothrud Pune", spend: 53162 },
+    { project: "Lodha New Launch Hinjewadi Pune", spend: 198772 },
+    { project: "Lodha Panache (Lodha Hinjewadi)", spend: 57867 },
+    { project: "Kohinoor Kaliedo + Kharadi Pune", spend: 62251 },
+    { project: "Godrej Elaris (Magarpatta Mundhwa)", spend: 47771 },
+    { project: "Lodha Camelot Kharadi Pune", spend: 26910 },
+    { project: "Godrej Greenfront / Park World", spend: 44323 },
+    { project: "Kumar Prism (Magarpatta)", spend: 53931 },
+    { project: "Bramha Corp Codename Panorama Bavdhan Pune", spend: 57792 },
+    { project: "Majestique Aaravli Warje Pune", spend: 83647 },
+    { project: "Kohinoor Gen More (Downtown 2)", spend: 142302 },
+    { project: "Shapoorji Palloonji Joyville Hinjewadi", spend: 25797 },
+    { project: "Mahindra Citadel Pune", spend: 11384 },
+    { project: "Purple Codename Real Kharadi", spend: 53384 },
+  ],
+  Mar: [
+    { project: "Birla Estate Pune", spend: 73506 },
+    { project: "Kolte Patil Codename Xtra Hinjewadi", spend: 21735 },
+    { project: "Kolte Patil Codename Udaan Hinjewadi", spend: 74188 },
+    { project: "Krisala & Hiranandani Pune", spend: 187408 },
+    { project: "Godrej Evergreen Hinjewadi Pune", spend: 96419 },
+    { project: "Kumar Parc Magarpatta Pune", spend: 67870 },
+    { project: "Godrej Upper Kharadi Pune", spend: 98454 },
+    { project: "Purple Codename Real Kharadi Pune", spend: 98454 },
+    { project: "Godrej Park Springs Pune", spend: 27824 },
+    { project: "Gera Island of Joy Kharadi", spend: 36373 },
+    { project: "Godrej Aqua Retreat Hinjewadi Pune", spend: 106636 },
+    { project: "Bramha Corp Codename Panorama Bavdhan Pune", spend: 46759 },
+  ],
+};
+
+const TL_LIST = ["Rahul", "Nikhil", "Kiran Kumar"];
+const MONTHS = ["Jan", "Feb", "Mar"];
+
+// ─── HELPER ──────────────────────────────────────────────────────────────────
+const fmt = (n) => {
+  if (n === undefined || n === null) return "—";
+  if (typeof n === "number") return n.toLocaleString("en-IN");
+  return n;
+};
+const fmtCur = (n) => {
+  if (!n) return "₹0";
+  return "₹" + Number(n).toLocaleString("en-IN");
+};
+
+// ─── STYLES ──────────────────────────────────────────────────────────────────
+const S = {
+  bg: "#0c0c0f",
+  card: "#16161a",
+  cardHover: "#1e1e24",
+  border: "#2a2a32",
+  accent: "#e8772e",
+  accentDim: "rgba(232,119,46,0.15)",
+  accentGlow: "rgba(232,119,46,0.3)",
+  text: "#e8e8ec",
+  textDim: "#8a8a96",
+  green: "#34d399",
+  greenDim: "rgba(52,211,153,0.12)",
+  red: "#f87171",
+  blue: "#60a5fa",
+  blueDim: "rgba(96,165,250,0.12)",
+};
+
+const LOGO_SVG = "data:image/webp;base64,UklGRigFAABXRUJQVlA4IBwFAADQIgCdASq0ALQAPkkkj0UioiEUKfQIKASEsbdnz6vAZeGabDj8r1qPvvJ69FxmXAnIX+s+3n6Uf031W/if/ae4B/dP6n+pvWP8wH7X/tH7qn+K/x3sI9AD+ff3H1OP9d7FX9e/53sM/sZ6af7X/DH+537He2Q79fsApRH9C4gOMXHkHyFcvnAztYrdpP98qrAP7Bryp6W8AHby2ccDxKQksdSaalCxV56IUhMl45xFrogxJzlWAf2YbME11Qf3eXFH4XxJ3FS3+DWOe/rLeAGPNhvuHAf3DVtZLD8afzpcwoSnapB3qm6wDe10KD+y3Ei3+bomYcwo46GeEEexKLgZN+LaRlPatUMgHfQDfdRA2Rfkwix6g9iUhQ7nwLqQAAD+/5D5j/fDPlLqduWSpxnzPlGDLOmds+vMX1jFrgFn/LTe8KKhYRt3t539tgls3SxTj0HsgJ0nAK/5P+K6L6s4LjYKMw8XCrK4NwvIAVaoHHBv98U9ASyeNbTqf5sLiyqGSb92H4ubn3N8uMVeH5fvs4ygq3Dr32hJccb1rPwnXvww//6Dys7/Nz4VAK1NjVEz5PJHaxDiRgBscN6nMZpS5hn84a535v8puHOCLOnzw74v2uGjv3c3TRjocgIXgSwwbIGpI+AKP0ykgETif5plVLxwcou8AWjARo6C2xFmt0spMHVoUR80/EXz2VfsvzEJJfA+W76Qb8hCvAnq1lnOFnr9Zpl3uBQ2/mTsBMoNfNzF1xsRpfCAVsj0MVUyfhkukUbeetbWs40hAcg9I+ViwCLyC3OveyyY9cNx+dd2wmO33d2P9ONi0yTuybV6FcfA6ADXNvYplf0MPD1L87DJ8nAvh4CEsr53PgtR0SFm7e3yez+LJjN0iff4XOB3UQR5Sv0AvxG7guupsx4bqGskDGC3Wo0s8tOEIg/3HXCSXhhN4rhsmSgLcvZH1YDb+sbdv9JjLQGPZnMDWXeFG4hyoOS7Rr+oA5hi27ccI+v+lwF1x5tgMpnXkoIHZGto9Mp+MkJOja75zf+oI4akuSrTiH0uLaab7viW2jan7boECs76YwSO4yD1017MWLqXVhEc4Ih2FGKxmCfedwnq2zhYK/4n1m25jBbhIo5OYBRBVn6HYPQWjkNAsDbYYE3KwJTsyF784UYn6pY3UcPlE5ZbtTW9u+IhrP+zr0n7DCEYokeHtbqE2zUcXRMdU7jR/dUxDvPgg0gVxiOThYi1MjI/rLSs9PGsgEm3cCeepTQb3D0hWe7DpjOAz7fwFQH4xmq4KTB7wKyS7ZDQ3ysby8suhvHDyP+GTgku/sul7/sLitGcaNHZBfYRsNQkExvTeL0jS+hx2U0acbW2js0ZgM57uNAh9kgRNfEdHH/Z4K3ggdpBkejJG22wwqfgyWJN9rPdBkTg5b/QjgXgv8yIJWK68dkkdA2AG6BeOFMKKBX0t3tCanCTYVA0lObIRYCniCDeVmWwj+ygnA0jrP4H+fnfY70z3qd6sLrCWZRDM6/jhTiYD7tGyDpjrkKU9k1UUZOSNVnbdgxwmFtqDkaPHiLMVvAqiz9XqSefPOLvZl/BC4grFyxm2jQOqlTwpSSnr37ckCM3sX3hMAJWGg1htVO04KbC8oK7fwcNIbcwXhZaJdmfRV55bq1Z8zsMJgN737l9SRZMiMTCy48Z3ZlvitsrXpcX1AluUEAmW5bciDfk3yavTUJAZwKWAOWLMcDUKazDxgABa6yj8AAAAAA=";
+
+// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+function MetricCard({ label, value, sub, color }) {
+  return (
+    <div style={{
+      background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "18px 20px",
+      flex: "1 1 180px", minWidth: 160, position: "relative", overflow: "hidden",
+    }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: color || S.accent }} />
+      <div style={{ fontSize: 12, color: S.textDim, textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 8, fontFamily: "'DM Sans',sans-serif" }}>{label}</div>
+      <div style={{ fontSize: 26, fontWeight: 700, color: S.text, fontFamily: "'Space Grotesk',monospace" }}>{value}</div>
+      {sub && <div style={{ fontSize: 12, color: S.textDim, marginTop: 4 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function CellModal({ data, onClose }) {
+  if (!data) return null;
+  return (
+    <div onClick={onClose} style={{
+      position: "fixed", inset: 0, zIndex: 9999, background: "rgba(0,0,0,0.7)", display: "flex", alignItems: "center", justifyContent: "center",
+      backdropFilter: "blur(6px)",
+    }}>
+      <div onClick={(e) => e.stopPropagation()} style={{
+        background: S.card, border: `1px solid ${S.border}`, borderRadius: 16, padding: 28, minWidth: 340, maxWidth: 500,
+        boxShadow: `0 0 60px ${S.accentGlow}`,
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div style={{ fontSize: 18, fontWeight: 700, color: S.accent }}>{data.title}</div>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: S.textDim, fontSize: 22, cursor: "pointer" }}>✕</button>
+        </div>
+        <div style={{ color: S.text, fontSize: 14, lineHeight: 1.8 }}>
+          {Object.entries(data.details).map(([k, v]) => (
+            <div key={k} style={{ display: "flex", justifyContent: "space-between", borderBottom: `1px solid ${S.border}`, padding: "6px 0" }}>
+              <span style={{ color: S.textDim }}>{k}</span>
+              <span style={{ fontWeight: 600, fontFamily: "'Space Grotesk',monospace" }}>{v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ClickCell({ children, onClick, style }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <td
+      onClick={onClick}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        padding: "10px 14px", borderBottom: `1px solid ${S.border}`, cursor: "pointer", transition: "all 0.15s",
+        background: hov ? S.accentDim : "transparent", fontFamily: "'Space Grotesk',monospace", fontSize: 13, ...style,
+      }}
+    >
+      {children}
+    </td>
+  );
+}
+
+// ─── MAIN DASHBOARD ──────────────────────────────────────────────────────────
+function Dashboard() {
+  const [role, setRole] = useState("Admin");
+  const [selectedTL, setSelectedTL] = useState("Rahul");
+  const [selectedEmp, setSelectedEmp] = useState("");
+  const [month, setMonth] = useState("Jan");
+  const [tab, setTab] = useState("overview");
+  const [modal, setModal] = useState(null);
+
+  // Role-based filtering
+  const visibleTLs = useMemo(() => {
+    if (role === "Admin") return TL_LIST;
+    if (role === "TL") return [selectedTL];
+    return [selectedTL];
+  }, [role, selectedTL]);
+
+  const visibleEmployees = useMemo(() => {
+    const tl = role === "Employee" ? selectedTL : selectedTL;
+    const emps = EMPLOYEES_DATA[tl]?.[month] || [];
+    if (role === "Employee" && selectedEmp) return emps.filter((e) => e.name === selectedEmp);
+    return emps;
+  }, [role, selectedTL, selectedEmp, month]);
+
+  const visibleProjects = useMemo(() => {
+    if (role === "Employee") return [];
+    const tl = selectedTL;
+    return PROJECTS_DATA[tl]?.[month] || [];
+  }, [role, selectedTL, month]);
+
+  // Aggregate stats — Leads & QL from EMPLOYEES_DATA (all 3 TLs), Bookings/Revenue/Pipeline from PROJECTS_DATA
+  const stats = useMemo(() => {
+    let totalLeads = 0, totalQL = 0, totalBookings = 0, totalRevenue = 0, totalPipeline = 0, totalSpend = 0;
+    const tls = role === "Admin" ? TL_LIST : [selectedTL];
+    tls.forEach((tl) => {
+      const emps = EMPLOYEES_DATA[tl]?.[month] || [];
+      emps.forEach((e) => {
+        totalLeads += e.leads || 0;
+        totalQL += e.ql || 0;
+      });
+      const projs = PROJECTS_DATA[tl]?.[month] || [];
+      projs.forEach((p) => {
+        totalBookings += p.bookings || 0;
+        totalRevenue += p.revenue || 0;
+        totalPipeline += p.pipeline || 0;
+        totalSpend += p.spend || 0;
+      });
+    });
+    if (role === "Admin") {
+      const mk = MARKETING_SPEND[month] || [];
+      totalSpend = mk.reduce((a, b) => a + (b.spend || 0), 0);
+    }
+    return { totalLeads, totalQL, totalBookings, totalRevenue, totalPipeline, totalSpend };
+  }, [role, selectedTL, month]);
+
+  const allEmployeeNames = useMemo(() => {
+    const names = new Set();
+    Object.values(EMPLOYEES_DATA[selectedTL] || {}).forEach((arr) => arr.forEach((e) => names.add(e.name)));
+    return [...names].sort();
+  }, [selectedTL]);
+
+  const openCellModal = (title, details) => setModal({ title, details });
+
+  // ─── RENDER ──────────────────────────────────────────────────────────────
+  const tabBtn = (id, label) => (
+    <button
+      key={id}
+      onClick={() => setTab(id)}
+      style={{
+        padding: "10px 22px", borderRadius: 8, border: `1px solid ${tab === id ? S.accent : S.border}`,
+        background: tab === id ? S.accentDim : "transparent", color: tab === id ? S.accent : S.textDim,
+        cursor: "pointer", fontSize: 13, fontWeight: 600, transition: "all 0.2s", fontFamily: "'DM Sans',sans-serif",
+      }}
+    >
+      {label}
+    </button>
+  );
+
+  const selectStyle = {
+    padding: "8px 14px", borderRadius: 8, border: `1px solid ${S.border}`, background: S.card, color: S.text,
+    fontSize: 13, cursor: "pointer", outline: "none", fontFamily: "'DM Sans',sans-serif",
+  };
+
+  const thStyle = {
+    padding: "12px 14px", borderBottom: `2px solid ${S.accent}`, textAlign: "left", fontSize: 11,
+    textTransform: "uppercase", letterSpacing: 1.2, color: S.accent, fontWeight: 700, position: "sticky", top: 0,
+    background: S.card, fontFamily: "'DM Sans',sans-serif",
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh", background: S.bg, color: S.text, fontFamily: "'DM Sans', sans-serif",
+      padding: 0, margin: 0,
+    }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+      {/* ─── HEADER ─── */}
+      <div style={{
+        background: `linear-gradient(135deg, ${S.card} 0%, #1a1218 100%)`,
+        borderBottom: `1px solid ${S.border}`, padding: "16px 28px", display: "flex", alignItems: "center", gap: 16,
+        position: "sticky", top: 0, zIndex: 100, backdropFilter: "blur(12px)",
+      }}>
+        <img src={LOGO_SVG} alt="Logo" style={{ height: 44, width: 44, objectFit: "contain", borderRadius: 8, background: "#fff", padding: 3 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, color: S.text, letterSpacing: -0.5 }}>
+            Pune Operations <span style={{ color: S.accent }}>Dashboard</span>
+          </div>
+          <div style={{ fontSize: 11, color: S.textDim, letterSpacing: 1 }}>PERFORMANCE TRACKER · JAN–MAR 2026</div>
+        </div>
+        <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+          <select value={role} onChange={(e) => { setRole(e.target.value); setSelectedEmp(""); }} style={{ ...selectStyle, borderColor: S.accent }}>
+            <option value="Admin">👑 Admin View</option>
+            <option value="TL">📋 TL View</option>
+            <option value="Employee">👤 Employee View</option>
+          </select>
+          {(role === "TL" || role === "Employee") && (
+            <select value={selectedTL} onChange={(e) => { setSelectedTL(e.target.value); setSelectedEmp(""); }} style={selectStyle}>
+              {TL_LIST.map((tl) => <option key={tl} value={tl}>{tl}</option>)}
+            </select>
+          )}
+          {role === "Employee" && (
+            <select value={selectedEmp} onChange={(e) => setSelectedEmp(e.target.value)} style={selectStyle}>
+              <option value="">Select Employee</option>
+              {allEmployeeNames.map((n) => <option key={n} value={n}>{n}</option>)}
+            </select>
+          )}
+          <select value={month} onChange={(e) => setMonth(e.target.value)} style={selectStyle}>
+            {MONTHS.map((m) => <option key={m} value={m}>{m} 2026</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div style={{ padding: "20px 28px", maxWidth: 1400, margin: "0 auto" }}>
+        {/* ─── TABS ─── */}
+        <div style={{ display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" }}>
+          {tabBtn("overview", "Overview")}
+          {role !== "Employee" && tabBtn("projects", "Projects")}
+          {tabBtn("employees", "Employees")}
+          {role === "Admin" && tabBtn("developers", "Developers / Marketing")}
+          {role === "Admin" && tabBtn("tl_compare", "TL Comparison")}
+        </div>
+
+        {/* ─── OVERVIEW TAB ─── */}
+        {tab === "overview" && (
+          <>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
+              <MetricCard label="Total Leads" value={fmt(stats.totalLeads)} color={S.accent} />
+              <MetricCard label="Qualified Leads" value={fmt(stats.totalQL)} color={S.blue} />
+              <MetricCard label="Total Bookings" value={fmt(stats.totalBookings)} color={S.green} />
+              <MetricCard label="Revenue" value={fmtCur(stats.totalRevenue)} color={S.green} />
+              <MetricCard label="Pipeline" value={fmtCur(stats.totalPipeline)} color="#a78bfa" />
+              <MetricCard label="Marketing Spend" value={fmtCur(stats.totalSpend)} color={S.red} />
+            </div>
+
+            {/* Quick TL summary for admin */}
+            {role === "Admin" && (
+              <div style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden", marginBottom: 24 }}>
+                <div style={{ padding: "16px 20px", borderBottom: `1px solid ${S.border}`, fontSize: 15, fontWeight: 700 }}>
+                  Team Leaders — <span style={{ color: S.accent }}>{month} 2026</span>
+                </div>
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr>
+                        {["TL Name", "Employees", "Total Leads", "Total QL", "Bookings", "Revenue", "Pipeline"].map((h) => (
+                          <th key={h} style={thStyle}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TL_LIST.map((tl) => {
+                        const emps = EMPLOYEES_DATA[tl]?.[month] || [];
+                        const projs = PROJECTS_DATA[tl]?.[month] || [];
+                        const tLeads = emps.reduce((a, e) => a + e.leads, 0);
+                        const tQL = emps.reduce((a, e) => a + e.ql, 0);
+                        const tBook = projs.reduce((a, p) => a + (p.bookings || 0), 0);
+                        const tRev = projs.reduce((a, p) => a + (p.revenue || 0), 0);
+                        const tPipe = projs.reduce((a, p) => a + (p.pipeline || 0), 0);
+                        return (
+                          <tr key={tl}>
+                            <ClickCell onClick={() => openCellModal(tl, { Role: "Team Leader", Month: month, "Team Size": emps.length, "Total Leads": fmt(tLeads) })} style={{ color: S.accent, fontWeight: 700 }}>
+                              {tl}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal(`${tl}'s Team`, Object.fromEntries(emps.map((e) => [e.name, `${e.leads} leads`])))} style={{ color: S.text }}>
+                              {emps.length}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Leads Breakdown", Object.fromEntries(emps.map((e) => [e.name, fmt(e.leads)])))} style={{ color: S.text }}>
+                              {fmt(tLeads)}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("QL Breakdown", Object.fromEntries(emps.map((e) => [e.name, fmt(e.ql)])))} style={{ color: S.blue }}>
+                              {fmt(tQL)}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Bookings by Project", Object.fromEntries(projs.filter(p=>p.bookings).map(p=>[p.project, p.bookings])))} style={{ color: S.green }}>
+                              {fmt(tBook)}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Revenue by Project", Object.fromEntries(projs.filter(p=>p.revenue).map(p=>[p.project, fmtCur(p.revenue)])))} style={{ color: S.green }}>
+                              {fmtCur(tRev)}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Pipeline by Project", Object.fromEntries(projs.filter(p=>p.pipeline).map(p=>[p.project, fmtCur(p.pipeline)])))} style={{ color: "#a78bfa" }}>
+                              {fmtCur(tPipe)}
+                            </ClickCell>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Month-over-month bar chart */}
+            <div style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, padding: 20 }}>
+              <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Monthly Leads Trend</div>
+              <div style={{ display: "flex", gap: 24, alignItems: "flex-end", height: 180 }}>
+                {MONTHS.map((m) => {
+                  const tls = role === "Admin" ? TL_LIST : [selectedTL];
+                  let total = 0;
+                  tls.forEach((tl) => {
+                    (EMPLOYEES_DATA[tl]?.[m] || []).forEach((e) => { total += e.leads; });
+                  });
+                  const maxH = 160;
+                  const allTotals = MONTHS.map((mm) => {
+                    let t = 0;
+                    tls.forEach((tl) => { (EMPLOYEES_DATA[tl]?.[mm] || []).forEach((e) => { t += e.leads; }); });
+                    return t;
+                  });
+                  const maxVal = Math.max(...allTotals, 1);
+                  const h = (total / maxVal) * maxH;
+                  return (
+                    <div key={m} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: S.text, fontFamily: "'Space Grotesk',monospace" }}>{fmt(total)}</div>
+                      <div style={{
+                        width: "100%", maxWidth: 80, height: h, borderRadius: "8px 8px 0 0",
+                        background: m === month ? `linear-gradient(180deg, ${S.accent}, rgba(232,119,46,0.4))` : `linear-gradient(180deg, ${S.border}, rgba(42,42,50,0.4))`,
+                        transition: "height 0.5s ease",
+                        boxShadow: m === month ? `0 0 20px ${S.accentGlow}` : "none",
+                      }} />
+                      <div style={{ fontSize: 12, color: m === month ? S.accent : S.textDim, fontWeight: 600 }}>{m}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* ─── PROJECTS TAB ─── */}
+        {tab === "projects" && role !== "Employee" && (
+          <div>
+            {(role === "Admin" ? TL_LIST : [selectedTL]).map((tl) => {
+              const projs = PROJECTS_DATA[tl]?.[month] || [];
+              if (!projs.length) return null;
+              return (
+                <div key={tl} style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden", marginBottom: 20 }}>
+                  <div style={{ padding: "14px 20px", borderBottom: `1px solid ${S.border}`, fontSize: 15, fontWeight: 700 }}>
+                    {tl}'s Projects — <span style={{ color: S.accent }}>{month} 2026</span>
+                  </div>
+                  <div style={{ overflowX: "auto" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <thead>
+                        <tr>
+                          {["Project", "Leads", "QL", "Visits", "Spend", "Bookings", "Revenue", "Pipeline"].map((h) => (
+                            <th key={h} style={thStyle}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {projs.map((p, i) => (
+                          <tr key={i}>
+                            <ClickCell onClick={() => openCellModal(p.project, { TL: tl, Month: month, Leads: fmt(p.leads), QL: fmt(p.ql), Visits: fmt(p.visits), Spend: fmtCur(p.spend), Bookings: fmt(p.bookings), Revenue: fmtCur(p.revenue), Pipeline: fmtCur(p.pipeline) })} style={{ color: S.text, fontWeight: 600, fontFamily: "'DM Sans',sans-serif", maxWidth: 260 }}>
+                              {p.project}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Leads", { Project: p.project, Leads: fmt(p.leads), Month: month })} style={{ color: S.text }}>{fmt(p.leads)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("QL", { Project: p.project, QL: fmt(p.ql) })} style={{ color: S.blue }}>{fmt(p.ql)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Visits", { Project: p.project, Visits: fmt(p.visits) })} style={{ color: S.text }}>{fmt(p.visits)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Spend", { Project: p.project, Spend: fmtCur(p.spend) })} style={{ color: S.red }}>{fmtCur(p.spend)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Bookings", { Project: p.project, Bookings: fmt(p.bookings) })} style={{ color: S.green }}>{fmt(p.bookings)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Revenue", { Project: p.project, Revenue: fmtCur(p.revenue) })} style={{ color: S.green }}>{fmtCur(p.revenue)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Pipeline", { Project: p.project, Pipeline: fmtCur(p.pipeline) })} style={{ color: "#a78bfa" }}>{fmtCur(p.pipeline)}</ClickCell>
+                          </tr>
+                        ))}
+                        {/* Totals row */}
+                        <tr style={{ background: S.accentDim }}>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.accent, borderBottom: "none" }}>TOTAL</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.text, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(projs.reduce((a, p) => a + p.leads, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.blue, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(projs.reduce((a, p) => a + p.ql, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.text, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(projs.reduce((a, p) => a + p.visits, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.red, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(projs.reduce((a, p) => a + p.spend, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.green, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(projs.reduce((a, p) => a + p.bookings, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.green, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(projs.reduce((a, p) => a + p.revenue, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: "#a78bfa", borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(projs.reduce((a, p) => a + p.pipeline, 0))}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ─── EMPLOYEES TAB ─── */}
+        {tab === "employees" && (
+          <div>
+            {(role === "Admin" ? TL_LIST : [selectedTL]).map((tl) => {
+              let emps = EMPLOYEES_DATA[tl]?.[month] || [];
+              if (role === "Employee" && selectedEmp) emps = emps.filter((e) => e.name === selectedEmp);
+              if (!emps.length) return null;
+              return (
+                <div key={tl} style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden", marginBottom: 20 }}>
+                  <div style={{ padding: "14px 20px", borderBottom: `1px solid ${S.border}`, fontSize: 15, fontWeight: 700 }}>
+                    {tl}'s Team — <span style={{ color: S.accent }}>{month} 2026</span>
+                    <span style={{ fontSize: 12, color: S.textDim, marginLeft: 12 }}>({emps.length} members)</span>
+                  </div>
+                  <div style={{ overflowX: "auto" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <thead>
+                        <tr>
+                          {["#", "Employee", "Leads", "QL", "Visits", "Total Calls", "Bookings", "Revenue", "Pipeline", "Salary"].map((h) => (
+                            <th key={h} style={thStyle}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {emps.map((e, i) => (
+                          <tr key={i}>
+                            <td style={{ padding: "10px 14px", borderBottom: `1px solid ${S.border}`, color: S.textDim, fontSize: 12 }}>{i + 1}</td>
+                            <ClickCell onClick={() => openCellModal(e.name, { TL: tl, Month: month, Leads: fmt(e.leads), QL: fmt(e.ql), Visits: fmt(e.visits), "Total Calls": fmt(e.totalCalls), Bookings: fmt(e.bookings), Revenue: fmtCur(e.revenue), Pipeline: fmtCur(e.pipeline) })} style={{ color: S.text, fontWeight: 600, fontFamily: "'DM Sans',sans-serif", whiteSpace: "nowrap" }}>
+                              {e.name}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal("Leads", { Employee: e.name, Leads: fmt(e.leads) })} style={{ color: S.text }}>{fmt(e.leads)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("QL", { Employee: e.name, QL: fmt(e.ql) })} style={{ color: S.blue }}>{fmt(e.ql)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Visits", { Employee: e.name, Visits: fmt(e.visits) })} style={{ color: S.text }}>{fmt(e.visits)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Total Calls", { Employee: e.name, "Total Calls": fmt(e.totalCalls) })} style={{ color: S.text }}>{fmt(e.totalCalls)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Bookings", { Employee: e.name, Bookings: fmt(e.bookings) })} style={{ color: S.green }}>{fmt(e.bookings)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Revenue", { Employee: e.name, Revenue: fmtCur(e.revenue) })} style={{ color: S.green }}>{fmtCur(e.revenue)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Pipeline", { Employee: e.name, Pipeline: fmtCur(e.pipeline) })} style={{ color: "#a78bfa" }}>{fmtCur(e.pipeline)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Salary", { Employee: e.name, Salary: fmtCur(e.salary) })} style={{ color: S.textDim }}>{fmtCur(e.salary)}</ClickCell>
+                          </tr>
+                        ))}
+                        <tr style={{ background: S.accentDim }}>
+                          <td style={{ padding: "12px 14px", borderBottom: "none" }} />
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.accent, borderBottom: "none" }}>TOTAL</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.text, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(emps.reduce((a, e) => a + e.leads, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.blue, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(emps.reduce((a, e) => a + e.ql, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.text, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(emps.reduce((a, e) => a + e.visits, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.text, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(emps.reduce((a, e) => a + e.totalCalls, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.green, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmt(emps.reduce((a, e) => a + e.bookings, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.green, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(emps.reduce((a, e) => a + e.revenue, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: "#a78bfa", borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(emps.reduce((a, e) => a + e.pipeline, 0))}</td>
+                          <td style={{ padding: "12px 14px", fontWeight: 700, color: S.textDim, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>{fmtCur(emps.reduce((a, e) => a + e.salary, 0))}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ─── DEVELOPERS / MARKETING TAB ─── */}
+        {tab === "developers" && role === "Admin" && (
+          <div>
+            <div style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden", marginBottom: 20 }}>
+              <div style={{ padding: "14px 20px", borderBottom: `1px solid ${S.border}`, fontSize: 15, fontWeight: 700 }}>
+                Developer / Project Revenue & Marketing Spend — <span style={{ color: S.accent }}>{month} 2026</span>
+              </div>
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>
+                      {["Project / Developer", "TL", "Leads", "QL", "Bookings", "Revenue", "Pipeline", "Marketing Spend", "ROI"].map((h) => (
+                        <th key={h} style={thStyle}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {TL_LIST.map((tl) => {
+                      const projs = PROJECTS_DATA[tl]?.[month] || [];
+                      return projs.map((p, i) => {
+                        const roi = p.spend > 0 ? (((p.revenue + p.pipeline) / p.spend) * 100).toFixed(1) : "—";
+                        return (
+                          <tr key={`${tl}-${i}`}>
+                            <ClickCell onClick={() => openCellModal(p.project, { TL: tl, Leads: fmt(p.leads), QL: fmt(p.ql), Bookings: fmt(p.bookings), Revenue: fmtCur(p.revenue), Pipeline: fmtCur(p.pipeline), Spend: fmtCur(p.spend), ROI: roi + "%" })} style={{ color: S.text, fontWeight: 600, fontFamily: "'DM Sans',sans-serif", maxWidth: 240 }}>
+                              {p.project}
+                            </ClickCell>
+                            <ClickCell onClick={() => openCellModal(tl, { Role: "TL" })} style={{ color: S.accent }}>{tl}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Leads", { Project: p.project, Leads: fmt(p.leads) })} style={{ color: S.text }}>{fmt(p.leads)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("QL", { Project: p.project, QL: fmt(p.ql) })} style={{ color: S.blue }}>{fmt(p.ql)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Bookings", { Project: p.project, Bookings: fmt(p.bookings) })} style={{ color: S.green }}>{fmt(p.bookings)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Revenue", { Project: p.project, Revenue: fmtCur(p.revenue) })} style={{ color: S.green }}>{fmtCur(p.revenue)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Pipeline", { Project: p.project, Pipeline: fmtCur(p.pipeline) })} style={{ color: "#a78bfa" }}>{fmtCur(p.pipeline)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("Marketing Spend", { Project: p.project, Spend: fmtCur(p.spend) })} style={{ color: S.red }}>{fmtCur(p.spend)}</ClickCell>
+                            <ClickCell onClick={() => openCellModal("ROI", { Project: p.project, "Total Value": fmtCur(p.revenue + p.pipeline), Spend: fmtCur(p.spend), ROI: roi + "%" })} style={{ color: Number(roi) > 200 ? S.green : S.textDim }}>
+                              {roi}%
+                            </ClickCell>
+                          </tr>
+                        );
+                      });
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Full Marketing Spend breakdown */}
+            <div style={{ background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden" }}>
+              <div style={{ padding: "14px 20px", borderBottom: `1px solid ${S.border}`, fontSize: 15, fontWeight: 700 }}>
+                All Marketing Spend — <span style={{ color: S.accent }}>{month} 2026</span>
+              </div>
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr>
+                      {["#", "Project", "Spend"].map((h) => (
+                        <th key={h} style={thStyle}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(MARKETING_SPEND[month] || []).map((m, i) => (
+                      <tr key={i}>
+                        <td style={{ padding: "10px 14px", borderBottom: `1px solid ${S.border}`, color: S.textDim, fontSize: 12 }}>{i + 1}</td>
+                        <ClickCell onClick={() => openCellModal(m.project, { Month: month, Spend: fmtCur(m.spend) })} style={{ color: S.text, fontFamily: "'DM Sans',sans-serif" }}>
+                          {m.project}
+                        </ClickCell>
+                        <ClickCell onClick={() => openCellModal("Spend Detail", { Project: m.project, Spend: fmtCur(m.spend) })} style={{ color: S.red }}>
+                          {fmtCur(m.spend)}
+                        </ClickCell>
+                      </tr>
+                    ))}
+                    <tr style={{ background: S.accentDim }}>
+                      <td style={{ padding: "12px 14px", borderBottom: "none" }} />
+                      <td style={{ padding: "12px 14px", fontWeight: 700, color: S.accent, borderBottom: "none" }}>TOTAL</td>
+                      <td style={{ padding: "12px 14px", fontWeight: 700, color: S.red, borderBottom: "none", fontFamily: "'Space Grotesk',monospace", fontSize: 13 }}>
+                        {fmtCur((MARKETING_SPEND[month] || []).reduce((a, b) => a + (b.spend || 0), 0))}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ─── TL COMPARISON TAB ─── */}
+        {tab === "tl_compare" && role === "Admin" && (
+          <div>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 24 }}>
+              {TL_LIST.map((tl) => {
+                const data = {};
+                MONTHS.forEach((m) => {
+                  const emps = EMPLOYEES_DATA[tl]?.[m] || [];
+                  const projs = PROJECTS_DATA[tl]?.[m] || [];
+                  data[m] = {
+                    leads: emps.reduce((a, e) => a + e.leads, 0),
+                    ql: emps.reduce((a, e) => a + e.ql, 0),
+                    bookings: projs.reduce((a, p) => a + (p.bookings || 0), 0),
+                    revenue: projs.reduce((a, p) => a + (p.revenue || 0), 0),
+                    pipeline: projs.reduce((a, p) => a + (p.pipeline || 0), 0),
+                  };
+                });
+                return (
+                  <div key={tl} style={{ flex: "1 1 300px", background: S.card, borderRadius: 12, border: `1px solid ${S.border}`, overflow: "hidden" }}>
+                    <div style={{ padding: "14px 18px", borderBottom: `1px solid ${S.border}`, background: S.accentDim }}>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: S.accent }}>{tl}</div>
+                      <div style={{ fontSize: 11, color: S.textDim }}>Team Leader</div>
+                    </div>
+                    <div style={{ padding: 16 }}>
+                      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                        <thead>
+                          <tr>
+                            {["", "Jan", "Feb", "Mar"].map((h) => (
+                              <th key={h} style={{ padding: "6px 8px", fontSize: 10, color: S.textDim, textTransform: "uppercase", letterSpacing: 1, textAlign: "right", fontFamily: "'DM Sans',sans-serif" }}>{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            { label: "Leads", key: "leads", color: S.text },
+                            { label: "QL", key: "ql", color: S.blue },
+                            { label: "Bookings", key: "bookings", color: S.green },
+                            { label: "Revenue", key: "revenue", color: S.green, cur: true },
+                            { label: "Pipeline", key: "pipeline", color: "#a78bfa", cur: true },
+                          ].map((row) => (
+                            <tr key={row.label}>
+                              <td style={{ padding: "6px 8px", fontSize: 11, color: S.textDim }}>{row.label}</td>
+                              {MONTHS.map((m) => (
+                                <ClickCell key={m} onClick={() => openCellModal(`${tl} - ${row.label} (${m})`, { Value: row.cur ? fmtCur(data[m][row.key]) : fmt(data[m][row.key]) })} style={{ color: row.color, textAlign: "right", fontSize: 12, padding: "6px 8px" }}>
+                                  {row.cur ? fmtCur(data[m][row.key]) : fmt(data[m][row.key])}
+                                </ClickCell>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ─── FOOTER ─── */}
+        <div style={{ textAlign: "center", padding: "32px 0 16px", color: S.textDim, fontSize: 11 }}>
+          Pune Operations Dashboard · Data sourced from Jan–Mar 2026 · {role} View
+        </div>
+      </div>
+
+      {/* ─── MODAL ─── */}
+      <CellModal data={modal} onClose={() => setModal(null)} />
+    </div>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Dashboard />);
+</script>
+</body>
+</html>
